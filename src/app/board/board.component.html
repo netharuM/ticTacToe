@@ -1,11 +1,17 @@
-<h1>current player : {{ player}}</h1>
+<div class="plyer-board">
+  <div class="gcen">
+    <div class="cenInfo">
+      <h1 *ngIf="!winner">current player : {{ player}}</h1>
+      <h2 *ngIf="winner">
+        player {{ winner }} won the game
+      </h2>  
+      <div class="cenBtn">
+        <button nbButton outline status="danger" shape="round" (click)="newGame()">Restart</button>
+      </div>
+    </div>
+  </div>
+</div>
 
-<button nbButton outline status="danger" (click)="newGame()">Start new game</button>
-
-
-<h2 *ngIf="winner">
-  player {{ winner }} won the game
-</h2>
 
 <main>
   <app-square *ngFor="let val of squares; let i = index" [value]="val" (click)="makeMove(i)">
